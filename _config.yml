@@ -19,12 +19,12 @@ author-info:
   cv:
     icon: 
     text: Resume
-    url: https://drive.google.com/drive/folders/19hgrmzspE4Jzg187RN6gyvVWKTktMCcL
+    url: pdfs/Curriculum_Vitae.pdf
 # Short bio or description (displayed in the header)
 description: Research Resident at VinAI Research
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: https://drive.google.com/file/d/1o-aeQnnvgXR4sK88N4spPwbY4X9obVqd/view?usp=sharing
+avatar: images/profile.jpg
 
 #
 # Flags below are optional
