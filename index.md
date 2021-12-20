@@ -3,23 +3,23 @@ layout: default
 usemathjax: true
 ---
 
-I'm currently a research resident at VinAI Research. 
+I'm a Research Resident at [VinAI Research](https://www.vinai.io/). I was mentored by [Dr. Yasin Abbasi-Yadkori](https://yasin-abbasi.github.io/), [Prof. Dinh Phung](https://research.monash.edu/en/persons/dinh-phung), and [Dr. Tung Pham](https://scholar.google.com.au/citations?user=KcUuEKsAAAAJ&hl=en). I received my B.Eng from [Hanoi University of Science and Technology](https://en.hust.edu.vn/), working with [Prof. Mai Nguyen Thi Phuong](https://sme.hust.edu.vn/en/officer/pgs-ts-nguyen-thi-phuong-mai.html)
 
-I am interested in data-efficient and robust machine learning methods. Currently, I mainly focus on the techniques of Active Learning for selecting informative samples, the applications of Bayesian Inference and Distributionally Robust Optimization for enhancing the quality and robustness of ML models.
-
-I am also passionate about deep learning techniques, especially deep generative models like GANs, VAEs, and Normalizing Flows.
+I am interested in the intersection between Reinforcement Learning (RL), Transfer Learning. I want to contribute my effort to advance our understanding of incorporating either humans’ knowledge or pre-discovered statistics to solve Sequential Decision Problems effectively. To realize this goal, I approach the problem on multiple fronts: Active Learning and Domain Adaptation to find and transfer necessary information, and Bandit Meta-Learning to plan adaptively. Then, I want to apply what I learn to solve practical problems such as transfer learning to increase the data efficiency in using RL to solve complex Robotics tasks.
 
 # Biography
 
 {% 
 assign biography = "
-Nov. 2019 – Present | Research Resident at VinAI Research
+Jul. 2019 – Present | Research Resident at VinAI Research
 ---
-Jun. 2018 – Apr. 2019 | Software developer at VC Corporation
+May. 2018 – Jun. 2019 | AI Team leader & Scrum master at NAL Vietnam JSC
 ---
-Jun. 2017 – Jun. 2019 | Undergraduate research assistant at Data Science Lab, School of Information and Communication Technology, HUST
+Aug. 2015 – Jun. 2018 | Undergraduate at Hanoi University of Science and Technology
 ---
-Aug. 2014 – Mar. 2019 | Student at Hanoi University of Science and Technology (HUST). I graduated one semester earlier than the five-year standard program with an Excellence Degree of Engineer in Information Systems
+Jun. 2016 – Aug. 2016 | Research internship at National Chung Cheng University
+---
+Jun. 2015 – Aug. 2015 | Research internship at Sun Moon University
 
 " | split: '---' 
 %}
@@ -34,20 +34,20 @@ __<span> {{ milestone_arr[0] | strip }} </span>__ : *{{ milestone_arr[1] | strip
 {% 
 assign publications = "
 
-Distributionally Robust Fair Principal Components via Geodesic Descents |
-__Hieu Vu*__, Toan Tran, Man-Chung Yue, Viet Anh Nguyen |
-*preprint, 2021* |
-pdfs/2021_RFPCA.pdf
+Bandit Meta-Learning with a Small Set of Optimal Arms |
+Yasin Abbasi Yadkori, __Thang Duong__, Claire Vernade, András György|
+*Under submission for ICML 2022* |
+pdfs/Meta_Bandit.pdf
 ---
-Bayesian Metric Learning for Robust Training of Deep Models under Noisy Labels |
-__Hieu Vu*__, Toan Tran, Gustavo Carneiro |
-*preprint, 2020* |
-pdfs/2020_BDML.pdf
+Deep regression for precise geometric dimension measurement |
+__Thang Duong Nhat__, Binh Nguyen Duc, Phuong Le Khac, Ngoc Tu Nguyen, Mai Nguyen Thi Phuong |
+*J. Korean Soc. Precis. Eng., Vol. 36, No. 8, pp. 683-690, 2019. [DOI](https://doi.org/10.7736/KSPE.2019.36.8.683)* |
+pdfs/PRISM19.pdf
 ---
-MAP Estimation With Bernoulli Randomness, and Its Application to Text Analysis and Recommender Systems |
-Xuan Bui, __Hieu Vu*__, Oanh Nguyen, Khoat Than |
-*IEEE Access, 2020* |
-https://ieeexplore.ieee.org/iel7/6287639/8948470/09138369.pdf
+Analyzing seismic signal using Support Vector Machine for vehicle motion detection |
+__Duong Nhat Thang__, Nguyen Thi Phuong Mai |
+*J. Industrial networks and intelligent systems; 2019* |
+pdfs/INISCOM18.pdf
 
 " | split: '---' 
 %}
@@ -59,7 +59,7 @@ __<span style='font-size: 20px'> {{ pub_arr[0] | strip }} </span>__ <br> *{{ pub
 {% endfor %}
 
 
-
+<!-- 
 # Awards
 
 __Excellence scholarship for the academic year of 2018 − 2019__ <br>
@@ -74,4 +74,4 @@ __Excellence scholarship for the academic year of 2018 − 2019__ <br>
 # Collaborators
 - [Man-Chung Yue](https://manchungyue.com/)
 - [Gustavo Carneiro](https://cs.adelaide.edu.au/~carneiro/)
-- [Xuan Bui](https://scholar.google.com.vn/citations?user=DSLkmeUAAAAJ)
+- [Xuan Bui](https://scholar.google.com.vn/citations?user=DSLkmeUAAAAJ) -->
