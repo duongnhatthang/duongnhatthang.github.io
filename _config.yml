@@ -3,28 +3,28 @@
 #
 
 # Name of your site (displayed in the header)
-name: Hieu Vu
+name: Thang Duong
 
 # Name of the author
-author: hieuvt
+author: thangdn
 author-info:
-  google_scholar: 
-    icon: fas fa-graduation-cap
-    text: Google Scholar
-    url: https://scholar.google.com.vn/citations?user=Tzp0jPgAAAAJ
+#   google_scholar: 
+#     icon: fas fa-graduation-cap
+#     text: Google Scholar
+#     url: https://scholar.google.com.vn/citations?user=Tzp0jPgAAAAJ
   linkedin: 
     icon: fab fa-linkedin-in
     text: LinkedIn
-    url: https://linkedin.com/in/hieuvt29
+    url: https://www.linkedin.com/in/thang-duong-b4055412a/
   cv:
     icon: 
-    text: CV
-    url: pdfs/Curriculum_Vitae.pdf
+    text: Resume
+    url: https://drive.google.com/drive/folders/19hgrmzspE4Jzg187RN6gyvVWKTktMCcL
 # Short bio or description (displayed in the header)
 description: Research Resident at VinAI Research
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: https://avatars.githubusercontent.com/u/18468247?v=4
+avatar: https://drive.google.com/file/d/1o-aeQnnvgXR4sK88N4spPwbY4X9obVqd/view?usp=sharing
 
 #
 # Flags below are optional
@@ -33,15 +33,15 @@ avatar: https://avatars.githubusercontent.com/u/18468247?v=4
 # Includes an icon in the footer for each username you enter
 footer-links:
   dribbble:
-  email: vutronghieu.04012203@gmail.com
+  email: duongnhatthang@gmail.com
   facebook:
   flickr:
-  github: hieuvt29
+  github: duongnhatthang
   instagram:
-  linkedin: 
+  linkedin: thang-duong-b4055412a
   pinterest:
-  rss: rss
-  twitter: hieuvu_04012203
+  rss:
+  twitter: duongnhatthang
   stackoverflow: 
   youtube: # channel/<your_long_string> or user/<user-name>
   googleplus: # anything in your profile username that comes after plus.google.com/
@@ -60,8 +60,8 @@ google_analytics:
 
 # Your website URL (e.g. http://amitmerchant1990.github.io or http://www.amitmerchant.com)
 # Used for Sitemap.xml and your RSS feed
-url: http://hieuvt29.github.io
-enforce_ssl: https://hieuvt29.github.io
+url: http://thangduong.github.io
+enforce_ssl: https://thangduong.github.io
 
 # If you're hosting your site at a Project repository on GitHub pages
 # (http://yourusername.github.io/repository-name)
