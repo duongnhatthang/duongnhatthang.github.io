@@ -5,7 +5,7 @@ usemathjax: true
 
 I'm a Research Resident at [VinAI Research](https://www.vinai.io/). I was mentored by [Dr. Yasin Abbasi-Yadkori](https://yasin-abbasi.github.io/), [Prof. Dinh Phung](https://research.monash.edu/en/persons/dinh-phung), and [Dr. Tung Pham](https://scholar.google.com.au/citations?user=KcUuEKsAAAAJ&hl=en). I received my B.Eng from [Hanoi University of Science and Technology](https://en.hust.edu.vn/), working with [Prof. Mai Nguyen Thi Phuong](https://sme.hust.edu.vn/en/officer/pgs-ts-nguyen-thi-phuong-mai.html)
 
-I am interested in the intersection between Reinforcement Learning (RL), Transfer Learning. I want to contribute my effort to advance our understanding of incorporating either humans’ knowledge or pre-discovered statistics to solve Sequential Decision Problems effectively. To realize this goal, I approach the problem on multiple fronts: Active Learning and Domain Adaptation to find and transfer necessary information, and Bandit Meta-Learning to plan adaptively. Then, I want to apply what I learn to solve practical problems such as transfer learning to increase the data efficiency in using RL to solve complex Robotics tasks.
+My research interests lie between Reinforcement Learning (RL) and Transfer Learning. I want to advance our understanding of how to incorporate either humans’ knowledge or pre-discovered statistics to solve Sequential Decision Problems effectively. To realize this goal, I approach the problem on multiple fronts: Active Learning and Domain Adaptation to find and transfer necessary information, and Bandit Meta-Learning to plan adaptively. Then, I want to apply what I learn to solve practical problems such as increasing the data efficiency of RL to solve complex Robotics tasks.
 
 # Biography
 
