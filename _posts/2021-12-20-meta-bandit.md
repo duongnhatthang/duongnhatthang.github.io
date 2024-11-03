@@ -1,9 +1,9 @@
 ---
-title: Bandit Meta-Learning with a Small Set of Optimal Arms
+title: Non-stationary Bandits and Meta-Learning with a Small Set of Optimal Arms
 layout: post
 usemathjax: true
 type: article
-status: Under submission for ICML 2022
+status: RLC 2024 Conference
 categories: 
     - bandit
     - meta-learning
