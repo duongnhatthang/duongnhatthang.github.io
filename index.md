@@ -3,7 +3,7 @@ layout: default
 usemathjax: true
 ---
 
-Hello!. I'm a PhD student at the [Computer Science Department, the University of Arizona](https://www.cs.arizona.edu/) From 2019 to 2022, I was a Research Resident at [VinAI Research](https://www.vinai.io/), mentored by [Dr. Yasin Abbasi-Yadkori](https://yasin-abbasi.github.io/), [Prof. Dinh Phung](https://research.monash.edu/en/persons/dinh-phung), and [Dr. Tung Pham](https://scholar.google.com.au/citations?user=KcUuEKsAAAAJ&hl=en). I received my B.Eng from [Hanoi University of Science and Technology](https://en.hust.edu.vn/), working with [Prof. Mai Nguyen Thi Phuong](https://sme.hust.edu.vn/en/officer/pgs-ts-nguyen-thi-phuong-mai.html)
+Hello! I'm a PhD student at the [Computer Science Department, the University of Arizona](https://www.cs.arizona.edu/) From 2019 to 2022, I was a Research Resident at [VinAI Research](https://www.vinai.io/), mentored by [Dr. Yasin Abbasi-Yadkori](https://yasin-abbasi.github.io/), [Prof. Dinh Phung](https://research.monash.edu/en/persons/dinh-phung), and [Dr. Tung Pham](https://scholar.google.com.au/citations?user=KcUuEKsAAAAJ&hl=en). I received my B.Eng from [Hanoi University of Science and Technology](https://en.hust.edu.vn/), working with [Prof. Mai Nguyen Thi Phuong](https://sme.hust.edu.vn/en/officer/pgs-ts-nguyen-thi-phuong-mai.html)
 
 You can reach me by email at thangduong (at) arizona dot edu.
 
