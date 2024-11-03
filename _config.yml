@@ -11,17 +11,17 @@ author-info:
 #   google_scholar: 
 #     icon: fas fa-graduation-cap
 #     text: Google Scholar
-#     url: https://scholar.google.com.vn/citations?user=Tzp0jPgAAAAJ
+#     url: https://scholar.google.com/citations?user=4UjiRMYAAAAJ&hl=en
   linkedin: 
     icon: fab fa-linkedin-in
     text: LinkedIn
-    url: https://www.linkedin.com/in/thang-duong-b4055412a/
+    url: https://www.linkedin.com/in/duong-thang
   cv:
     icon: 
     text: Resume
-    url: pdfs/Curriculum_Vitae.pdf
+    url: pdfs/Resume.pdf
 # Short bio or description (displayed in the header)
-description: Research Resident at VinAI Research
+description: PhD student at The University of Arizona
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: https://avatars.githubusercontent.com/u/16720155?s=400&u=f9dd9391657bf6976c5a3b134556cae783cb45bb&v=4
@@ -38,7 +38,7 @@ footer-links:
   flickr:
   github: duongnhatthang
   instagram:
-  linkedin: thang-duong-b4055412a
+  linkedin: duong-thang
   pinterest:
   rss:
   twitter: duongnhatthang
