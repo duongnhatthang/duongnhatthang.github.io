@@ -1,0 +1,281 @@
+---
+// Interactive multi-armed-bandit regret explorer.
+// IMPORTANT: this is a pedagogical illustration (live simulation in your
+// browser), NOT data from any paper.
+---
+
+<section id="demo" class="mx-auto max-w-4xl scroll-mt-20 px-5 py-10">
+  <h2 class="mb-2 text-sm font-semibold tracking-widest text-indigo-600 uppercase dark:text-indigo-400">
+    Interactive: bandit regret
+  </h2>
+  <p class="mb-5 max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+    A core theme of my work is <em>sample efficiency</em> — how fast a learner
+    stops paying for exploration. Below, two classic strategies play the same
+    multi-armed bandit live in your browser: <strong>UCB</strong> (adaptive,
+    logarithmic regret) vs. <strong>Explore-Then-Commit</strong> (explores, then
+    commits). Drag the sliders to see how the gap between arms and the horizon
+    change the cost of learning.
+    <span class="text-zinc-400">(Illustration — simulated here, not paper data.)</span>
+  </p>
+
+  <div class="rounded-xl border border-zinc-200 bg-zinc-50/50 p-4 dark:border-zinc-800 dark:bg-zinc-900/40">
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+      <label class="text-sm">
+        <span class="flex justify-between text-zinc-600 dark:text-zinc-300">
+          <span>Arms (K)</span><span id="val-arms" class="font-mono font-medium">5</span>
+        </span>
+        <input id="ctl-arms" type="range" min="2" max="8" step="1" value="5" class="mt-1 w-full accent-indigo-600" />
+      </label>
+      <label class="text-sm">
+        <span class="flex justify-between text-zinc-600 dark:text-zinc-300">
+          <span>Gap between arms (Δ)</span><span id="val-gap" class="font-mono font-medium">0.15</span>
+        </span>
+        <input id="ctl-gap" type="range" min="0.05" max="0.40" step="0.01" value="0.15" class="mt-1 w-full accent-indigo-600" />
+      </label>
+      <label class="text-sm">
+        <span class="flex justify-between text-zinc-600 dark:text-zinc-300">
+          <span>Horizon (T)</span><span id="val-T" class="font-mono font-medium">800</span>
+        </span>
+        <input id="ctl-T" type="range" min="200" max="1500" step="50" value="800" class="mt-1 w-full accent-indigo-600" />
+      </label>
+    </div>
+
+    <div class="mt-4 flex items-center gap-4 text-xs text-zinc-500 dark:text-zinc-400">
+      <span class="inline-flex items-center gap-1.5"><span class="inline-block h-2.5 w-3 rounded-sm" style="background:#4f46e5"></span>UCB</span>
+      <span class="inline-flex items-center gap-1.5"><span class="inline-block h-2.5 w-3 rounded-sm" style="background:#d97706"></span>Explore-Then-Commit</span>
+    </div>
+
+    <canvas id="bandit-canvas" class="mt-2 w-full" style="height:340px"></canvas>
+  </div>
+</section>
+
+<script>
+  type Arr = number[];
+
+  // Deterministic PRNG so curves are stable per setting (no flicker).
+  function mulberry32(seed: number) {
+    return function () {
+      seed |= 0;
+      seed = (seed + 0x6d2b79f5) | 0;
+      let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  const BEST = 0.7;
+  const RUNS = 40;
+
+  function simulate(K: number, gap: number, T: number) {
+    const mu: number[] = [BEST];
+    for (let k = 1; k < K; k++) mu.push(Math.max(0.05, BEST - gap));
+    const ucb = new Float64Array(T);
+    const etc = new Float64Array(T);
+
+    // Explore-Then-Commit exploration length (≈ optimal m per arm).
+    const m = Math.min(
+      Math.floor(T / K),
+      Math.max(1, Math.round((2 / (gap * gap)) * Math.log(Math.max(2, T * gap * gap))))
+    );
+
+    for (let r = 0; r < RUNS; r++) {
+      const rand = mulberry32(1000 + r * 7919);
+
+      // --- UCB1 ---
+      {
+        const counts = new Array(K).fill(0);
+        const sums = new Array(K).fill(0);
+        let cum = 0;
+        for (let t = 0; t < T; t++) {
+          let idx: number;
+          if (t < K) {
+            idx = t;
+          } else {
+            let best = -Infinity;
+            idx = 0;
+            for (let k = 0; k < K; k++) {
+              const mean = sums[k] / counts[k];
+              const bonus = Math.sqrt((2 * Math.log(t + 1)) / counts[k]);
+              const score = mean + bonus;
+              if (score > best) {
+                best = score;
+                idx = k;
+              }
+            }
+          }
+          cum += BEST - mu[idx];
+          ucb[t] += cum;
+          counts[idx]++;
+          sums[idx] += rand() < mu[idx] ? 1 : 0;
+        }
+      }
+
+      // --- Explore-Then-Commit ---
+      {
+        const counts = new Array(K).fill(0);
+        const sums = new Array(K).fill(0);
+        let cum = 0;
+        let committed = -1;
+        for (let t = 0; t < T; t++) {
+          let idx: number;
+          if (t < m * K) {
+            idx = t % K;
+          } else {
+            if (committed < 0) {
+              let best = -Infinity;
+              committed = 0;
+              for (let k = 0; k < K; k++) {
+                const mean = counts[k] ? sums[k] / counts[k] : 0;
+                if (mean > best) {
+                  best = mean;
+                  committed = k;
+                }
+              }
+            }
+            idx = committed;
+          }
+          cum += BEST - mu[idx];
+          etc[t] += cum;
+          counts[idx]++;
+          sums[idx] += rand() < mu[idx] ? 1 : 0;
+        }
+      }
+    }
+
+    for (let t = 0; t < T; t++) {
+      ucb[t] /= RUNS;
+      etc[t] /= RUNS;
+    }
+    return { ucb: Array.from(ucb), etc: Array.from(etc) };
+  }
+
+  const canvas = document.getElementById("bandit-canvas") as HTMLCanvasElement | null;
+  const ctx = canvas?.getContext("2d") ?? null;
+
+  function draw(ucb: Arr, etc: Arr, T: number) {
+    if (!canvas || !ctx) return;
+    const dark = document.documentElement.classList.contains("dark");
+    const dpr = window.devicePixelRatio || 1;
+    const cssW = canvas.clientWidth || 600;
+    const cssH = 340;
+    canvas.width = Math.round(cssW * dpr);
+    canvas.height = Math.round(cssH * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, cssW, cssH);
+
+    const mL = 54, mR = 16, mT = 16, mB = 40;
+    const W = cssW - mL - mR;
+    const H = cssH - mT - mB;
+    const maxY = Math.max(ucb[T - 1], etc[T - 1], 1) * 1.08;
+
+    const gridC = dark ? "#3f3f46" : "#e4e4e7";
+    const textC = dark ? "#a1a1aa" : "#71717a";
+    const x = (i: number) => mL + (i / (T - 1)) * W;
+    const y = (v: number) => mT + H - (v / maxY) * H;
+
+    ctx.font = "11px ui-sans-serif, system-ui, sans-serif";
+    ctx.strokeStyle = gridC;
+    ctx.fillStyle = textC;
+    ctx.lineWidth = 1;
+
+    // horizontal grid + y labels
+    for (let g = 0; g <= 4; g++) {
+      const v = (maxY / 4) * g;
+      const yy = y(v);
+      ctx.beginPath();
+      ctx.moveTo(mL, yy);
+      ctx.lineTo(mL + W, yy);
+      ctx.stroke();
+      ctx.textAlign = "right";
+      ctx.textBaseline = "middle";
+      ctx.fillText(Math.round(v).toString(), mL - 8, yy);
+    }
+    // x ticks
+    ctx.textAlign = "center";
+    ctx.textBaseline = "top";
+    [0, Math.floor((T - 1) / 2), T - 1].forEach((i) => {
+      ctx.fillText((i + 1).toString(), x(i), mT + H + 8);
+    });
+
+    // axis titles
+    ctx.fillText("Round t", mL + W / 2, mT + H + 22);
+    ctx.save();
+    ctx.translate(14, mT + H / 2);
+    ctx.rotate(-Math.PI / 2);
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText("Cumulative regret", 0, 0);
+    ctx.restore();
+
+    const plot = (data: Arr, color: string) => {
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      const step = Math.max(1, Math.floor(T / 300));
+      for (let i = 0; i < T; i += step) {
+        const px = x(i);
+        const py = y(data[i]);
+        if (i === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      }
+      ctx.lineTo(x(T - 1), y(data[T - 1]));
+      ctx.stroke();
+    };
+    plot(etc, "#d97706");
+    plot(ucb, "#4f46e5");
+  }
+
+  let lastT = 800;
+  function run() {
+    const K = parseInt((document.getElementById("ctl-arms") as HTMLInputElement).value);
+    const gap = parseFloat((document.getElementById("ctl-gap") as HTMLInputElement).value);
+    const T = parseInt((document.getElementById("ctl-T") as HTMLInputElement).value);
+    lastT = T;
+    (document.getElementById("val-arms") as HTMLElement).textContent = K.toString();
+    (document.getElementById("val-gap") as HTMLElement).textContent = gap.toFixed(2);
+    (document.getElementById("val-T") as HTMLElement).textContent = T.toString();
+    const { ucb, etc } = simulate(K, gap, T);
+    draw(ucb, etc, T);
+    return { ucb, etc };
+  }
+
+  let cache: { ucb: Arr; etc: Arr } | null = null;
+  let started = false;
+  function ensureStarted() {
+    if (started) return;
+    started = true;
+    cache = run();
+  }
+
+  ["ctl-arms", "ctl-gap", "ctl-T"].forEach((id) => {
+    document.getElementById(id)?.addEventListener("input", () => {
+      cache = run();
+    });
+  });
+
+  // Redraw (no recompute) on resize + theme change.
+  let rT: number | undefined;
+  window.addEventListener("resize", () => {
+    window.clearTimeout(rT);
+    rT = window.setTimeout(() => {
+      if (cache) draw(cache.ucb, cache.etc, lastT);
+    }, 150);
+  });
+  new MutationObserver(() => {
+    if (cache) draw(cache.ucb, cache.etc, lastT);
+  }).observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+
+  // Lazy first compute when the demo scrolls into view.
+  if (canvas) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          ensureStarted();
+          io.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+    io.observe(canvas);
+  }
+</script>

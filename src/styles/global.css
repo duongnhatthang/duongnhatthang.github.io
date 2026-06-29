@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+/* Class-based dark mode: `dark:` responds to a `.dark` class on <html>. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+  --color-accent: #4f46e5; /* indigo-600 */
+  --color-accent-soft: #6366f1;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* offset sticky nav for anchor jumps */
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--color-accent) 25%, transparent);
+}
+
+/* Reusable link style for prose links inside cards */
+.link-accent {
+  color: var(--color-accent);
+}
+.link-accent:hover {
+  text-decoration: underline;
+}

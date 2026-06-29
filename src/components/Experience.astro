@@ -1,0 +1,70 @@
+---
+import { experience, education, skills } from "../data/site";
+---
+
+<section id="experience" class="mx-auto max-w-4xl scroll-mt-20 px-5 py-10">
+  <h2 class="mb-6 text-sm font-semibold tracking-widest text-indigo-600 uppercase dark:text-indigo-400">
+    Experience
+  </h2>
+
+  <div class="space-y-7">
+    {
+      experience.map((e) => (
+        <div class="grid grid-cols-1 gap-1 sm:grid-cols-[180px_1fr] sm:gap-5">
+          <div class="text-sm text-zinc-500 dark:text-zinc-400">
+            <p class="font-medium text-zinc-700 dark:text-zinc-300">{e.period}</p>
+            <p>{e.location}</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-zinc-900 dark:text-zinc-100">
+              {e.role} · <span class="text-indigo-600 dark:text-indigo-400">{e.org}</span>
+            </h3>
+            <ul class="mt-2 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-zinc-600 marker:text-indigo-400 dark:text-zinc-400">
+              {e.points.map((pt) => <li>{pt}</li>)}
+            </ul>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <h2 class="mt-12 mb-6 text-sm font-semibold tracking-widest text-indigo-600 uppercase dark:text-indigo-400">
+    Education
+  </h2>
+  <div class="space-y-4">
+    {
+      education.map((ed) => (
+        <div class="grid grid-cols-1 gap-1 sm:grid-cols-[180px_1fr] sm:gap-5">
+          <p class="text-sm font-medium text-zinc-700 dark:text-zinc-300">{ed.period}</p>
+          <div>
+            <h3 class="font-semibold text-zinc-900 dark:text-zinc-100">{ed.degree}</h3>
+            <p class="text-sm text-indigo-600 dark:text-indigo-400">{ed.org}</p>
+            {ed.note && <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-400">{ed.note}</p>}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <h2 class="mt-12 mb-6 text-sm font-semibold tracking-widest text-indigo-600 uppercase dark:text-indigo-400">
+    Skills
+  </h2>
+  <div class="space-y-3">
+    {
+      Object.entries(skills).map(([group, items]) => (
+        <div class="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:gap-4">
+          <span class="w-28 shrink-0 text-sm font-medium text-zinc-700 dark:text-zinc-300">
+            {group}
+          </span>
+          <div class="flex flex-wrap gap-1.5">
+            {items.map((s) => (
+              <span class="rounded-md bg-zinc-100 px-2 py-0.5 text-xs text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
+                {s}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

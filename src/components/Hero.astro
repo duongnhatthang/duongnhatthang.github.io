@@ -1,0 +1,61 @@
+---
+import { profile } from "../data/site";
+
+const L = profile.links;
+---
+
+<section id="top" class="mx-auto max-w-4xl px-5 pt-14 pb-8 sm:pt-20">
+  <div class="flex flex-col items-center gap-8 sm:flex-row sm:items-start">
+    <img
+      src={profile.headshot}
+      alt={`Portrait of ${profile.name}`}
+      width="160"
+      height="160"
+      class="h-36 w-36 shrink-0 rounded-2xl object-cover shadow-md ring-1 ring-zinc-200 dark:ring-zinc-800 sm:h-40 sm:w-40"
+      loading="eager"
+    />
+    <div class="text-center sm:text-left">
+      <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">
+        {profile.name}
+      </h1>
+      <p class="mt-2 text-lg font-medium text-indigo-600 dark:text-indigo-400">
+        {profile.role}
+      </p>
+      <p class="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+        {profile.status}
+      </p>
+      <p class="mt-4 max-w-xl text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
+        {profile.tagline}
+      </p>
+
+      <div
+        class="mt-5 flex flex-wrap justify-center gap-2 sm:justify-start"
+      >
+        <a
+          href={`mailto:${L.email}`}
+          class="inline-flex items-center gap-1.5 rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-indigo-700"
+        >
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+          Email
+        </a>
+        {
+          [
+            { url: L.resume, label: "Resume" },
+            { url: L.scholar, label: "Google Scholar" },
+            { url: L.github, label: "GitHub" },
+            { url: L.linkedin, label: "LinkedIn" },
+          ].map((item) => (
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center gap-1.5 rounded-md border border-zinc-300 px-3 py-1.5 text-sm font-medium text-zinc-700 transition-colors hover:border-indigo-500 hover:text-indigo-600 dark:border-zinc-700 dark:text-zinc-200 dark:hover:border-indigo-400 dark:hover:text-indigo-400"
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

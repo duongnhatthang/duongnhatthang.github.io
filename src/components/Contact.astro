@@ -1,0 +1,52 @@
+---
+import { profile } from "../data/site";
+const L = profile.links;
+---
+
+<section id="contact" class="mx-auto max-w-4xl scroll-mt-20 px-5 py-12">
+  <div class="rounded-2xl border border-zinc-200 bg-gradient-to-br from-indigo-50/60 to-transparent p-8 text-center dark:border-zinc-800 dark:from-indigo-950/30">
+    <h2 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+      Get in touch
+    </h2>
+    <p class="mx-auto mt-2 max-w-md text-sm text-zinc-600 dark:text-zinc-400">
+      I'm looking for industry research and applied-science roles starting 2026.
+      The fastest way to reach me is email.
+    </p>
+    <div class="mt-5 flex flex-wrap justify-center gap-2">
+      <a
+        href={`mailto:${L.email}`}
+        class="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-indigo-700"
+        >{L.email}</a
+      >
+      <a
+        href={L.resume}
+        target="_blank"
+        rel="noopener"
+        class="rounded-md border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-700 transition-colors hover:border-indigo-500 hover:text-indigo-600 dark:border-zinc-700 dark:text-zinc-200 dark:hover:border-indigo-400 dark:hover:text-indigo-400"
+        >Resume (PDF)</a
+      >
+      <a
+        href={L.scholar}
+        target="_blank"
+        rel="noopener"
+        class="rounded-md border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-700 transition-colors hover:border-indigo-500 hover:text-indigo-600 dark:border-zinc-700 dark:text-zinc-200 dark:hover:border-indigo-400 dark:hover:text-indigo-400"
+        >Google Scholar</a
+      >
+      <a
+        href={L.github}
+        target="_blank"
+        rel="noopener"
+        class="rounded-md border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-700 transition-colors hover:border-indigo-500 hover:text-indigo-600 dark:border-zinc-700 dark:text-zinc-200 dark:hover:border-indigo-400 dark:hover:text-indigo-400"
+        >GitHub</a
+      >
+      <a
+        href={L.linkedin}
+        target="_blank"
+        rel="noopener"
+        class="rounded-md border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-700 transition-colors hover:border-indigo-500 hover:text-indigo-600 dark:border-zinc-700 dark:text-zinc-200 dark:hover:border-indigo-400 dark:hover:text-indigo-400"
+        >LinkedIn</a
+      >
+    </div>
+    <p class="mt-5 text-xs text-zinc-400">{profile.location}</p>
+  </div>
+</section>
