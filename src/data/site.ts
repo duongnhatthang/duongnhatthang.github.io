@@ -23,7 +23,7 @@ export const profile = {
 export const badges = [
   "NeurIPS 2024 first author",
   "2× regret reduction on real mmWave benchmarks",
-  "3× faster RL convergence via LLM warm-start",
+  "RL-for-LLMs: warm-starting & process reward models",
 ];
 
 export const about = [
@@ -89,18 +89,18 @@ export const research: ResearchItem[] = [
   },
   {
     title: "Sample-Efficient Reinforcement Learning by Warm-Starting with LLMs",
-    venue: "Under review (UAI 2026)",
+    venue: "",
     status: "under-review",
     authorLine: "Thang Duong, et al.",
     impact:
-      "Up to 3× faster convergence on OpenAI Gym by using an LLM's in-context decisions to collect warm-start data for any off-the-shelf RL algorithm.",
+      "Up to 3× faster convergence on OpenAI Gym in our experiments, by using an LLM's in-context decisions to collect warm-start data for any off-the-shelf RL algorithm.",
     blurb:
       "When no offline dataset exists, we use an LLM to collect a small dataset that covers a good policy, then warm-start RL — combining low cumulative regret with high sample efficiency. (Details and code available upon publication.)",
   },
   {
     title:
       "Efficient Algorithms for Lifelong Representation Learning in Linear Bandits Beyond Task Diversity",
-    venue: "Under review (ICML)",
+    venue: "",
     status: "under-review",
     authorLine: "Thang Duong, et al.",
     impact:
@@ -165,7 +165,7 @@ export const experience: ExperienceItem[] = [
     points: [
       "Proved a regret guarantee that eliminates the task-diversity assumption for sequential multi-task representation transfer in bandits (NeurIPS 2024, first author).",
       "Cut beam-alignment regret 2× on the DeepMIMO and DeepSense6G benchmarks with physics-informed bandit algorithms (cross-team with Prof. Ming Li's ECE lab).",
-      "Achieved 3× faster convergence on OpenAI Gym via a novel RL warm-start pipeline using LLM-collected demonstrations; built a modular evaluation suite + release scripts for large-scale H100 experiments; mentored one undergraduate.",
+      "Built a novel RL warm-start pipeline using LLM-collected demonstrations, reaching up to 3× faster convergence on OpenAI Gym in our experiments; built a modular evaluation suite + release scripts for large-scale H100 experiments; mentored one undergraduate.",
     ],
   },
   {

@@ -33,7 +33,7 @@ export const publications: Publication[] = [
   {
     title: "Sample-Efficient Reinforcement Learning by Warm-Starting with LLMs",
     authors: "Thang Duong, et al.",
-    venue: "Under review (UAI 2026)",
+    venue: "",
     year: 2026,
     status: "under-review",
   },
@@ -41,7 +41,7 @@ export const publications: Publication[] = [
     title:
       "Efficient Algorithms for Lifelong Representation Learning in Linear Bandits Beyond Task Diversity",
     authors: "Thang Duong, et al.",
-    venue: "Under review (ICML)",
+    venue: "",
     year: 2026,
     status: "under-review",
   },
